@@ -1,0 +1,14 @@
+from collections import Counter
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        # Count the frequency of each character in the string
+        char_count = Counter(s)
+
+        # Sort the characters based on their frequency in decreasing order
+        sorted_chars = sorted(char_count, key=lambda x: (-char_count[x], x))
+
+        # Build the sorted string by repeating each character based on its frequency
+        sorted_str = ''.join(char * char_count[char] for char in sorted_chars)
+
+        return sorted_str
